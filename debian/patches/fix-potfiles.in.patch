@@ -1,0 +1,14 @@
+Description: Fixing POTFILES.in to include updated list of translated files.
+Author: Michael Moorman <tensorpuddin@devio.us>
+--- a/gtk/po/POTFILES.in
++++ b/gtk/po/POTFILES.in
+@@ -2,7 +2,8 @@
+ src/gtk_cheat.cpp
+ src/gtk_config.cpp
+ src/gtk_display_driver_opengl.cpp
++src/gtk_netplay.cpp
+ src/gtk_preferences.cpp
+ src/gtk_s9x.cpp
+ src/gtk_s9xwindow.cpp
+-src/snes9x.glade
++src/snes9x.ui

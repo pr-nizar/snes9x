@@ -1,0 +1,50 @@
+.TH SNES9X-GTK 6 "09 OCT 2011" "Debian Project" "Debian Linux"
+.SH NAME
+snes9x-gtk \- Super Nintendo Entertainment System emulator
+.SH SYNOPSIS
+.B snes9x-gtk
+[\-nostdconf] [\-conf <conf>] [\-filter <option>] [\-mutesound] [<romfile>]
+.SH DESCRIPTION
+Snes9x is a portable, freeware Super Nintendo Entertainment System (SNES)
+emulator. It basically allows you to play most games designed for the SNES
+and Super Famicom Nintendo game systems on your PC or Workstation; they
+include some real gems that were only ever released in Japan.
+
+snes9x-gtk is the GTK+ version of Snes9x. By default, it loads a
+configuration file at 
+.BR /etc/snes9x/snes9x.conf .
+.SS OPTIONS
+.TP
+.I \-nostdconf
+Disable loading the default configuration file.
+.TP
+.I \-conf "\| config\^"
+Load the configuration file at
+.IR config ,
+in addition to the default configuration file.
+.TP
+.I \-filter "\| option\^"
+Uses a filter to scale the image, chosen from:
+.nf
+none            no scaling (default)
+supereagle      Super Eagle scaling
+2xsai           2x Scale and Interpolation (SaI)
+super2xsai      Super 2x SaI
+hq2x            hqx 2:1 scaling
+hq3x            hqx 3:1 scaling
+hq4x            hqx 4:1 scaling
+epx             EPX (Eric's Pixel Expansion) scaling
+ntsc            Blargg's NTSC scaling
+.fi
+.TP
+.I \-mutesound
+Mutes the sound output.
+.SH AUTHOR
+Snes9x was written by Gary Henderson and Jerremy Koot. It also includes code
+from Ivar (Ivar@snes9x.com), zsKnight and _Demo_ and many others. The
+GTK+ version was written by Brandon Wright <bearoso@gmail.com>. 
+This manual page was written by Michael Moorman
+<tensorpuddin@devio.us>,
+for the Debian GNU/Linux system (but may be used by others).
+.SH SEE ALSO
+.BR snes9x (6)
