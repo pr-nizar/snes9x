@@ -1,19 +1,70 @@
 #!/usr/bin/make -f
 
-# Use --as-needed in linking to prevent superfluous shlibs
-export LDFLAGS=-Wl,--as-needed
-
 %:
-	dh --sourcedirectory=gtk $@
+	dh $@
 
-override_dh_auto_configure:
-	dh_auto_configure --sourcedirectory=unix -- --enable-netplay
+clean-gtk:
+	dh_testdir
+	dh_auto_clean --sourcedirectory=gtk
 
-override_dh_auto_build:
+clean-x:
+	dh_testdir
+	dh_auto_clean --sourcedirectory=unix
+	# Have to remove these files manually
+	rm -f unix/config.info unix/config.log unix/config.status unix/Makefile unix/snes9x docs/snes9x.conf
+
+clean: clean-gtk clean-x
+	dh_clean
+
+build:
+	# Nothing to do here, multiple packages build
+
+build-x: clean-x
+	@echo "Building Snes unix port..."
+	dh_testdir
+	dh_auto_configure --sourcedirectory=unix
 	dh_auto_build --sourcedirectory=unix
-	cd unix && $(MAKE) clean
-	dh_auto_configure --sourcedirectory=gtk -- --bindir=/usr/games
 	dh_auto_build --sourcedirectory=gtk
+	# Generate manually a snes9x.conf,
+	# this because dh_install can't rename files
+	cp docs/snes9x.conf.default docs/snes9x.conf
 
-override_dh_installchangelogs:
-	dh_installchangelogs docs/changes.txt
+build-gtk: clean-gtk
+	@echo "Building Gtk+ port..."
+	dh_testdir
+	dh_auto_configure --sourcedirectory=gtk
+
+binary-x: build-x
+	# Install for unix port
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	# We don't use dh_auto_install because the unix makefile
+	# doesn't have a install target.
+	#dh_auto_install --sourcedirectory=unix --destdir=debian/snes9x-x
+	dh_install -psnes9x-x
+
+binary-gtk: build-gtk
+	# Install for gtk
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	dh_auto_install --sourcedirectory=gtk
+	# dh_install will correct the bin/snes9x-gtk to games/snes9x-gtk
+	dh_install -psnes9x-gtk
+
+binary-arch: binary-x binary-gtk
+	dh_installdocs
+	dh_installchangelogs
+	dh_installexamples
+	dh_installman
+	dh_compress
+	dh_fixperms
+	dh_strip
+	dh_makeshlibs
+	dh_shlibdeps
+	dh_installdeb
+	dh_gencontrol
+
+binary: binary-arch
+

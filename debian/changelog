@@ -1,3 +1,11 @@
+snes9x (1:1.53-2) unstable; urgency=low
+
+  * debian/control: Remove snes9x-x dependency on snes9x-gtk.
+  * debian/control: Add some missing build dependencies.
+  * debian/rules: Completely rewrite to build both targets.
+
+ -- Félix Arreola Rodríguez <fgatuno.123@gmail.com>  Tue, 29 Nov 2011 22:33:52 -0600
+
 snes9x (1:1.53-1) unstable; urgency=low
 
   * New maintainer (Closes: #643595)

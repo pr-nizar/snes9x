@@ -109,3 +109,4 @@ win32/
 .deps/
 .pc/
 .dirstamp
+*.o
