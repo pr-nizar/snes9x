@@ -24,7 +24,6 @@ build-x: clean-x
 	dh_testdir
 	dh_auto_configure --sourcedirectory=unix
 	dh_auto_build --sourcedirectory=unix
-	dh_auto_build --sourcedirectory=gtk
 	# Generate manually a snes9x.conf,
 	# this because dh_install can't rename files
 	cp docs/snes9x.conf.default docs/snes9x.conf
@@ -33,21 +32,23 @@ build-gtk: clean-gtk
 	@echo "Building Gtk+ port..."
 	dh_testdir
 	dh_auto_configure --sourcedirectory=gtk
+	dh_auto_build --sourcedirectory=gtk
 
 binary-x: build-x
 	# Install for unix port
 	dh_testroot
+	# Call dh_prep just one time!
+	# A second call will clear snes9x-x directory!
 	dh_prep
 	dh_installdirs
 	# We don't use dh_auto_install because the unix makefile
 	# doesn't have a install target.
-	#dh_auto_install --sourcedirectory=unix --destdir=debian/snes9x-x
+	#dh_auto_install --sourcedirectory=unix
 	dh_install -psnes9x-x
 
 binary-gtk: build-gtk
 	# Install for gtk
 	dh_testroot
-	dh_prep
 	dh_installdirs
 	dh_auto_install --sourcedirectory=gtk
 	# dh_install will correct the bin/snes9x-gtk to games/snes9x-gtk
