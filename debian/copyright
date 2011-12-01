@@ -8,7 +8,9 @@ Disclaimer:
  distribution because the Snes9x Software License does not allow commercial use.
 
 Files: debian/*
-Copyright: Félix Arreola Rodríguez <fgatuno.123@gmail.com>
+Copyright: Félix Arreola Rodríguez <fgatuno.123@gmail.com>,
+           Michael Moorman <tensorpuddin@devio.us>,
+           Benjamin Drung <bdrung@ubuntu.com>
 License: GPL-3+
 
 Files: apu/ring_buffer.h
