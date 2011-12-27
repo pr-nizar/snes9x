@@ -22,7 +22,7 @@ build:
 build-x: clean-x
 	@echo "Building Snes unix port..."
 	dh_testdir
-	dh_auto_configure --sourcedirectory=unix
+	dh_auto_configure --sourcedirectory=unix -- --enable-netplay
 	dh_auto_build --sourcedirectory=unix
 	# Generate manually a snes9x.conf,
 	# this because dh_install can't rename files
