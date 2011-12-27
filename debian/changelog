@@ -1,14 +1,10 @@
-snes9x (1:1.53-3) unstable; urgency=low
-
-  * debian/rules: Fix a bug that emptys snes9x-x target.
-
- -- Félix Arreola Rodríguez <fgatuno.123@gmail.com>  Wed, 30 Nov 2011 14:32:13 -0600
-
 snes9x (1:1.53-2) unstable; urgency=low
 
   * debian/control: Remove snes9x-x dependency on snes9x-gtk.
   * debian/control: Add some missing build dependencies.
   * debian/rules: Completely rewrite to build both targets.
+  * debian/rules: Fix a bug that emptys snes9x-x target.
+  * debian/rules: Add snes9x-x netplay support.
 
  -- Félix Arreola Rodríguez <fgatuno.123@gmail.com>  Tue, 29 Nov 2011 22:33:52 -0600
 
