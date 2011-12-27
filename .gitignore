@@ -109,3 +109,6 @@ win32/
 .deps/
 .pc/
 .dirstamp
+
+# Ignore object files
+*.o
