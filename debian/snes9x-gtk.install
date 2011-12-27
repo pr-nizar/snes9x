@@ -1,1 +1,2 @@
-usr
+debian/tmp/usr/share/* usr/share
+debian/tmp/usr/bin/snes9x-gtk usr/games

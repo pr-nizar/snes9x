@@ -11,9 +11,14 @@ Build-Depends: debhelper (>= 7.0.50~),
                libx11-dev,
                libxml2-dev,
                libxv-dev,
+               libxrandr-dev,
+               libpng-dev,
+               libz-dev,
                nasm [i386],
-               portaudio19-dev
+               portaudio19-dev,
+               libasound2-dev
 Maintainer: Michael Moorman <tensorpuddin@devio.us>
+Uploaders: Félix Arreola Rodríguez <fgatuno.123@gmail.com>
 Homepage: http://www.snes9x.com/
 Standards-Version: 3.9.2
 
@@ -29,7 +34,7 @@ Description: X binaries for snes9x - Super NES Emulator
 
 Package: snes9x-gtk
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, snes9x-x
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: GTK+ port of Snes9x - Super NES Emulator
  Snes9x is a portable, freeware Super Nintendo Entertainment System (SNES)
  emulator. It basically allows you to play most games designed for the SNES
